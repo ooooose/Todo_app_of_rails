@@ -1,0 +1,15 @@
+current directory: /Users/ooseyuuki/Desktop/RUNTEQ/todo_app/vendor/bundle/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
+/Users/ooseyuuki/.rbenv/versions/2.6.3/bin/ruby -I /Users/ooseyuuki/.rbenv/versions/2.6.3/lib/ruby/2.6.0 -r ./siteconf20220628-95233-1quhrfn.rb extconf.rb
+creating Makefile
+
+current directory: /Users/ooseyuuki/Desktop/RUNTEQ/todo_app/vendor/bundle/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" clean
+
+current directory: /Users/ooseyuuki/Desktop/RUNTEQ/todo_app/vendor/bundle/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR="
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.bundle
+
+current directory: /Users/ooseyuuki/Desktop/RUNTEQ/todo_app/vendor/bundle/ruby/2.6.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20220628-95233-q8c2yn/skiptrace/internal
