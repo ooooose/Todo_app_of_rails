@@ -1,0 +1,6 @@
+<% provide(:title, "Posts Index") %>
+<%= link_to("新規投稿", new_post_path) %>
+<% @posts.each do |post| %>
+  <h3><%= link_to(post.content, "/posts/#{post.id}") %></h3> 
+  <small><%= post.created_at %></small>
+<% end %>

@@ -1,0 +1,7 @@
+<% provide(:title, "New post") %>
+<%= link_to("一覧へ戻る",posts_path) %>
+<%= form_for(@post) do |f| %>
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+  <%= f.submit  %>
+<% end %>
