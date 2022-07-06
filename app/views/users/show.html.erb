@@ -1,7 +1,9 @@
-<% provide(:title, "#{@user.name}'s Profile") %>
+<% provide(:title, "User Detail") %>
+<% provide(:intro, "#{@user.name}さんの詳細ページです") %>
 <div>
   <%= @user.name %> | <%= @user.email %>
 </div>
-<%= link_to("edit", edit_user_path) %>
-<%= link_to("delete", user_path, method: :delete) %>
-<%= link_to("一覧に戻る", users_path) %>
+<div class="float-right">
+  <%= link_to("編集",edit_user_path, class: "btn btn-info") %>
+  <%= link_to("削除",user_path, {method: "delete", class: "btn btn-dark"} ) %>
+</div>

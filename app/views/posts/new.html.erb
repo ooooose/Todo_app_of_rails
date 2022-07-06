@@ -1,7 +1,8 @@
 <% provide(:title, "New post") %>
-<%= link_to("一覧へ戻る",posts_path) %>
+<% provide(:intro, "新しい投稿を作成できます") %>
+
 <%= form_for(@post) do |f| %>
   <%= f.label :content %>
-  <%= f.text_field :content %>
-  <%= f.submit  %>
+  <%= f.text_area :content, class: "form-control" %>
+  <%= f.submit "Create Post", class: "btn btn-primary mt-2 float-right" %>
 <% end %>

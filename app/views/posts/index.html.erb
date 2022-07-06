@@ -1,6 +1,10 @@
 <% provide(:title, "Posts Index") %>
-<%= link_to("新規投稿", new_post_path) %>
+<% provide(:intro, "全ての投稿を閲覧できます") %>
 <% @posts.each do |post| %>
-  <h3><%= link_to(post.content, "/posts/#{post.id}") %></h3> 
-  <small><%= post.created_at %></small>
+  <div class="card">
+    <div class="card-body">
+      <h4><%= link_to(post.content, "/posts/#{post.id}") %></h4> 
+    </div>
+  </div>
+  <br/>
 <% end %>

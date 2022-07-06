@@ -1,7 +1,9 @@
-<% provide(:title, "Detail") %>
+<% provide(:title, "Post Detail") %>
+<% provide(:intro, "投稿の詳細です") %>
 
 <h1><%= @post.content %></h1>
 <small><%= @post.created_at %></small>
-<%= link_to("一覧へ戻る",posts_path) %>
-<%= link_to("編集",edit_post_path) %>
-<%= link_to("削除",post_path, {method: "delete"} ) %>
+<div class="float-right">
+  <%= link_to("編集",edit_post_path, class: "btn btn-info") %>
+  <%= link_to("削除",post_path, {method: "delete", class: "btn btn-dark"} ) %>
+</div>
