@@ -1,0 +1,7 @@
+<% provide(:title, "#{@user.name}'s Profile") %>
+<div>
+  <%= @user.name %> | <%= @user.email %>
+</div>
+<%= link_to("edit", edit_user_path) %>
+<%= link_to("delete", user_path, method: :delete) %>
+<%= link_to("一覧に戻る", users_path) %>

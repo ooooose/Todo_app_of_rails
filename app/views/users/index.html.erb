@@ -2,10 +2,10 @@
 
 <ul>
   <% @users.each do |user| %>
-    <%= link_to(user) do %>
-      <li>
-        <%= user.name %> | <%= user.email %>
-      </li>
-    <% end %>
+    <li>
+      <%= link_to(user.name, user ) %> | <%= user.email %>
+    </li>
   <% end %>
 </ul>
+<%= link_to("Create new user", new_user_path) %>
+<%= link_to("Postsを見る", posts_path) %>
