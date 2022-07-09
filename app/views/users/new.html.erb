@@ -1,6 +1,16 @@
 <% provide(:title, "Create User") %>
 <% provide(:intro, "新しいユーザーを作成できます") %>
 
+
+<% if @user.errors.any? %>
+  <div class="alert alert-warning">
+    <ul>
+     <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+     <% end %>
+    </ul>
+  </div>
+<% end %>
 <%= form_for(@user) do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name, class: "form-control" %>

@@ -1,6 +1,16 @@
 <% provide(:title, "New post") %>
 <% provide(:intro, "新しい投稿を作成できます") %>
 
+
+<% if @post.errors.any? %>
+  <div class="alert alert-warning">
+    <ul>
+     <% @post.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+     <% end %>
+    </ul>
+  </div>
+<% end %>
 <%= form_for(@post) do |f| %>
   <%= f.label :content %>
   <%= f.text_area :content, class: "form-control" %>

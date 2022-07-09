@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:notice] = "成功です！！"
-      redirect_to("/users")
+      redirect_to users_url
     else
       flash[:notice] = "失敗です！！"
       render("users/new")

@@ -13,8 +13,12 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.save
-    redirect_to("/posts")
+    if @post.save
+      flash[:notice] = "投稿が成功しました"
+      redirect_to posts_url
+    else
+      render("posts/new")
+    end
   end
 
   def edit
