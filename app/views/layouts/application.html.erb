@@ -31,6 +31,15 @@
               <%= link_to("New post", new_post_path, class: "nav-link") %>
             </li>
           </ul>
+          <ul class="navnar-nav mr-auto float-right">
+            <li class="nav-item">
+              <% if logged_in? %>
+                <%= link_to("Logout", "#") %>
+              <% else %>
+                <%= link_to("Login", "/login") %>
+              <% end %>
+            </li>
+          </ul>
         </div>
       </nav>
     </header>

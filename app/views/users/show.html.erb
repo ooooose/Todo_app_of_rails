@@ -1,6 +1,7 @@
 <% provide(:title, "User Detail") %>
 <% provide(:intro, "#{@user.name}さんの詳細ページです") %>
 <div>
+  <img src="<%= "/user_images/#{@user.image_name}" %>" >
   <%= @user.name %> | <%= @user.email %>
 </div>
 <div class="float-right">

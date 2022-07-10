@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :logged_in_user, only: [:edit, :update, :destroy]
 
   def index
     @users = User.all
@@ -10,6 +11,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.image_name = "default_user.jpg"
     if @user.save
       flash[:notice] = "成功です！！"
       redirect_to users_url
@@ -29,6 +31,11 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find_by(id: params[:id])
+    if params[:image]
+      @user.image_name = "#{@user.id}.jpg"
+      image = params[:image]
+      File.binwrite("/public/user_images/#{@user.image_name}", image.read)
+    end
     @user.update(user_params)
     if @user.save
       redirect_to @user
@@ -45,7 +52,6 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:name, :email)
+      params.require(:user).permit(:name, :email,:password,:password_confirmation, :image_name)
     end
-
 end
