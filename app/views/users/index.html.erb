@@ -3,7 +3,7 @@
 
 <div class="d-flex align-content-around flex-wrap">
   <% @users.each do |user| %>
-    <div class="card mr-2" style="width: 18rem;">
+    <div class="card mr-2" style="width: 24%;">
       <img class= "bd-placeholder-img card-img-top" width="100%" height="180" src="<%= "/user_images/#{user.image_name}" %>">
       <div class="card-body">
         <h3 class="card-text"><%= link_to(user.name, user) %></h3>

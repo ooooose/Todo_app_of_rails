@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :logged_in_user
+
   def index
     @posts = Post.all
   end
@@ -14,7 +16,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
-      flash[:notice] = "投稿が成功しました"
+      flash[:success] = "投稿が成功しました"
       redirect_to posts_url
     else
       render("posts/new")
@@ -29,15 +31,18 @@ class PostsController < ApplicationController
     @post = Post.find_by(id: params[:id])
     @post.update(post_params)
     if @post.save
+      flash[:success] = "投稿を更新しました"
       redirect_to @post
     else
-      render("posts/edit")
+      flash[:danger] = "更新に失敗しました"
+      render 'edit'
     end
   end
 
   def destroy
     @post = Post.find_by(id: params[:id])
     @post.destroy
+    flash[:success] = "投稿を削除しました"
     redirect_to posts_url
   end
 

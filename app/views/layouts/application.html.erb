@@ -12,52 +12,55 @@
   <body>
     <header>
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark m-auto">
-        <a class="navbar-brand" href="#">Twwiter</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav mr-auto">
+        <div class="container">
+          <%= link_to("Twwiter", root_path, class: "navbar-brand") %>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+              <% if logged_in? %>
+                <li class="nav-item">
+                  <%= link_to("Users", users_path, class: "nav-link") %>
+                 </li>
+                <li class="nav-item">
+                  <%= link_to("Posts", posts_path, class: "nav-link") %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to("New post", new_post_path, class: "nav-link") %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to("#{current_user.name}'s profile", current_user, class: "nav-link") %>
+                </li>
+               <% end %>  
+             </ul>
+           </div>
+           <ul class="navbar-nav mr-auto float-right">
             <% if logged_in? %>
               <li class="nav-item">
-                <%= link_to("Users", users_path, class: "nav-link") %>
+                <%= link_to("Logout", "/logout", {method: :delete, class: "nav-link"}) %>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to("Login", "/login", class: "nav-link") %>
               </li>
               <li class="nav-item">
-                <%= link_to("Posts", posts_path, class: "nav-link") %>
+                <%= link_to("Singin", new_user_path, class: "nav-link") %>
               </li>
-              <li class="nav-item">
-                <%= link_to("New post", new_post_path, class: "nav-link") %>
-              </li>
-              <li class="nav-item">
-                <%= link_to("#{current_user.name}'s profile", current_user, class: "nav-link") %>
-              </li>
-            <% end %>  
-          </ul>
-        </div>
-        <ul class="navbar-nav mr-auto float-right">
-          <% if logged_in? %>
-            <li class="nav-item">
-              <%= link_to("Logout", "/logout", {method: :delete, class: "nav-link"}) %>
-            </li>
-          <% else %>
-            <li class="nav-item">
-              <%= link_to("Login", "/login", class: "nav-link") %>
-            </li>
-            <li class="nav-item">
-              <%= link_to("Singin", new_user_path, class: "nav-link") %>
-            </li>
-          <% end %>
-        </ul>
+            <% end %>
+           </ul>
+         </div>
       </nav>
     </header>
-    <main role="main" class="flex-shrink-0">
-      <div class="container">
-        <br/>
-        <h1 class="mt-5"><%= yield(:title) %></h1>
-        <p class="lead"><%= yield(:intro) %></p>
-        <hr/>
-        <%= yield %>
-      </div>
-    </main>
+    <div class="container">
+      <div class="air-box"></div>
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+      <h1 class="mt-5"><%= yield(:title) %></h1>
+      <p class="lead"><%= yield(:intro) %></p>
+      <hr/>
+      <%= yield %>
+    </div>
   </body>
 </html>
