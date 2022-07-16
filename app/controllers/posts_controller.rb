@@ -2,11 +2,11 @@ class PostsController < ApplicationController
   before_action :logged_in_user
 
   def index
-    @posts = Post.all
+    @posts = current_user.posts 
   end
 
   def show
-    @post = Post.find_by(id: params[:id])
+    @post = current_user.posts.find(params[:id])
   end
 
   def new
@@ -14,7 +14,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.new(post_params)
     if @post.save
       flash[:success] = "投稿が成功しました"
       redirect_to posts_url
@@ -24,11 +24,11 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find_by(id: params[:id])
+    @post = current_user.posts.find(params[:id])
   end
   
   def update
-    @post = Post.find_by(id: params[:id])
+    @post = current_user.posts.find(params[:id])
     @post.update(post_params)
     if @post.save
       flash[:success] = "投稿を更新しました"
@@ -40,7 +40,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find_by(id: params[:id])
+    @post = current_user.posts.find(params[:id])
     @post.destroy
     flash[:success] = "投稿を削除しました"
     redirect_to posts_url

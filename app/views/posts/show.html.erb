@@ -1,7 +1,10 @@
 <% provide(:title, "Post Detail") %>
 <% provide(:intro, "投稿の詳細です") %>
 
-<h1><%= @post.content %></h1>
+<div class="d-flex">
+  <%= image_tag("/user_images/#{@post.user.image_name}",style: "border-radius: 50% ; width: 100px; height: 100px")  %>
+  <h1><%= @post.content %></h1>
+</div>
 <small><%= @post.created_at %></small>
 <div class="float-right">
   <%= link_to("編集",edit_post_path, class: "btn btn-info") %>
