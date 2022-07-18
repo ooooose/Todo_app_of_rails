@@ -1,10 +1,12 @@
 <% provide(:title, "User Detail") %>
 <% provide(:intro, "#{@user.name}さんの詳細ページです") %>
-<div>
-  <img src="<%= "/user_images/#{@user.image_name}" %>" >
-  <%= @user.name %> | <%= @user.email %>
+<div class="text-center">
+  <img src="<%= "/user_images/#{@user.image_name}" %>" class="profile_image" >
+  <h2><%= @user.name %></h2>
 </div>
-<div class="float-right">
-  <%= link_to("編集",edit_user_path, class: "btn btn-info") %>
-  <%= link_to("削除",user_path, {method: "delete", class: "btn btn-dark"} ) %>
-</div>
+<% if @user.id == current_user.id %>  
+  <div class="float-right">
+   <%= link_to("編集",edit_user_path, class: "btn btn-info") %>
+   <%= link_to("削除",user_path, {method: "delete", class: "btn btn-dark"} ) %>
+  </div>
+<% end %>

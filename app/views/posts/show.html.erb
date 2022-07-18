@@ -3,7 +3,7 @@
 
 <div class="d-flex">
   <%= image_tag("/user_images/#{@post.user.image_name}",style: "border-radius: 50% ; width: 100px; height: 100px")  %>
-  <h1><%= @post.content %></h1>
+  <h1 class="show-post-title"><%= @post.content %></h1>
 </div>
 <small><%= @post.created_at %></small>
 <div class="float-right">
